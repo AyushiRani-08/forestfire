@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Algerian Forest Fire Prediction</title>
+</head>
+<body style="font-family: sans-serif; background: #f4f4f4; padding: 20px;">
+
+    <div style="max-width: 500px; margin: auto; background: white; padding: 25px; border-radius: 8px;">
+        <h2>Algerian Forest Fire FWI Predictor</h2>
+        
+        <form action="/predictdata" method="POST">
+            <p><label>Temperature (°C):</label> <input type="number" step="any" name="Temperature" required></p>
+            <p><label>Relative Humidity (RH %):</label> <input type="number" step="any" name="RH" required></p>
+            <p><label>Wind Speed (Ws km/h):</label> <input type="number" step="any" name="Ws" required></p>
+            <p><label>Rain (mm):</label> <input type="number" step="any" name="Rain" required></p>
+            <p><label>Fine Fuel Moisture Code (FFMC):</label> <input type="number" step="any" name="FFMC" required></p>
+            <p><label>Duff Moisture Code (DMC):</label> <input type="number" step="any" name="DMC" required></p>
+            <p><label>Initial Spread Index (ISI):</label> <input type="number" step="any" name="ISI" required></p>
+            
+            <p>
+                <label>Classes:</label>
+                <select name="Classes">
+                    <option value="1">Fire</option>
+                    <option value="0">Not Fire</option>
+                </select>
+            </p>
+            <p>
+                <label>Region:</label>
+                <select name="Region">
+                    <option value="1">Bejaia</option>
+                    <option value="0">Sidi Bel-Abbes</option>
+                </select>
+            </p>
+            
+            <button type="submit" style="width:100%; padding: 10px; background: #e04f4f; color:white; border:none; border-radius:4px; font-weight:bold;">Predict FWI Index</button>
+        </form>
+
+        {% if result %}
+        <div style="margin-top:20px; padding:15px; background:#e2f0d9; border-left:5px solid #385723; text-align:center;">
+            <h3>Calculated FWI Result: {{ result }}</h3>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
